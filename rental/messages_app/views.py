@@ -15,3 +15,22 @@ class MessageViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(sender=self.request.user)
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
+MESSAGES = []
+
+@csrf_exempt
+def message_list(request):
+    if request.method == 'GET':
+        return JsonResponse(MESSAGES, safe=False)
+
+@csrf_exempt
+def send_message(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        MESSAGES.append(data)
+        return JsonResponse({"message": "Message sent successfully!"}, status=201)

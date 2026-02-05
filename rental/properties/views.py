@@ -19,3 +19,13 @@ class PropertyViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+from django.http import JsonResponse
+
+def property_list(request):
+    # temporary example data
+    data = [
+        {"id": 1, "title": "Room A", "location": "Lagos", "price": 50000},
+        {"id": 2, "title": "Room B", "location": "Abuja", "price": 60000},
+    ]
+    return JsonResponse(data, safe=False)

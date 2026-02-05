@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+5qk#atu0-ac)$=01m-+k%1@6a8dab@o^mwbqv)%&!8%+w#etv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,6 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -131,6 +134,7 @@ INSTALLED_APPS = [
     'properties',
     'favorites',
     'messages_app',
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
@@ -143,3 +147,7 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend'
     ]
 }
+
+
+
+CORS_ALLOW_ALL_ORIGINS = True

@@ -13,4 +13,5 @@ class Property(models.Model):
     amenities = models.TextField(blank=True)
     availability = models.BooleanField(default=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    
+    def __str__(self):
+        return self.title  
