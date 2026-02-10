@@ -1,6 +1,6 @@
 from django.db import models
-from accounts.models import User
-from properties.models import Property
+from rental.accounts.models import User
+from rental.properties.models import Property
 
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
