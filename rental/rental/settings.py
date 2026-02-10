@@ -130,10 +130,10 @@ INSTALLED_APPS = [
      'rest_framework',
     'django_filters',
 
-    'accounts',
-    'properties',
-    'favorites',
-    'messages_app',
+    'rental.accounts',
+    'rental.properties',
+    'rental.favorites',
+    'rental.messages_app',
     'corsheaders',
 ]
 
