@@ -29,10 +29,10 @@ router.register('messages', MessageViewSet, basename='messages')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/accounts/', include('accounts.urls')),
-    path('api/properties/', include('properties.urls')),
-    path('api/favorites/', include('favorites.urls')),
-    path('api/messages/', include('messages_app.urls')),
+    path('api/accounts/', include('rental.accounts.urls')),
+    path('api/properties/', include('rental.properties.urls')),
+    path('api/favorites/', include('rental.favorites.urls')),
+    path('api/messages/', include('rental.messages_app.urls')),
     path('api/', include(router.urls)),
 ]
 
