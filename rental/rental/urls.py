@@ -34,7 +34,13 @@ urlpatterns = [
     path('api/favorites/', include('rental.favorites.urls')),
     path('api/messages/', include('rental.messages_app.urls')),
     path('api/', include(router.urls)),
+    path('', TemplateView.as_view(template_name='index.html')),
+    path('api/', include('rental.rental.urls')),
 ]
+#from django.views.generic import TemplateView
+
+
+# keep your API routes
 
 
 

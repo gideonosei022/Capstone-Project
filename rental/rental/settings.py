@@ -158,3 +158,8 @@ ALLOWED_HOSTS = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+import os
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/static')]
+TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'frontend')]
