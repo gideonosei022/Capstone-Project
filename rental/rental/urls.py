@@ -20,6 +20,7 @@ from rest_framework.routers import DefaultRouter
 from rental.properties.views import PropertyViewSet
 from rental.favorites.views import FavoriteViewSet
 from rental.messages_app.views import MessageViewSet
+from django.views.generic import TemplateView
 
 router = DefaultRouter()
 router.register('rental.properties', PropertyViewSet)
@@ -41,6 +42,7 @@ urlpatterns = [
 
 
 # keep your API routes
+
 
 
 
