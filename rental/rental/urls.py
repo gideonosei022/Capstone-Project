@@ -17,14 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from properties.views import PropertyViewSet
-from favorites.views import FavoriteViewSet
-from messages_app.views import MessageViewSet
+from rental.properties.views import PropertyViewSet
+from rental.favorites.views import FavoriteViewSet
+from rental.messages_app.views import MessageViewSet
 
 router = DefaultRouter()
-router.register('properties', PropertyViewSet)
-router.register('favorites', FavoriteViewSet, basename='favorites')
-router.register('messages', MessageViewSet, basename='messages')
+router.register('rental.properties', PropertyViewSet)
+router.register('rental.favorites', FavoriteViewSet, basename='favorites')
+router.register('rental.messages', MessageViewSet, basename='messages')
 
 
 urlpatterns = [
