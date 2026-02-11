@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'rental.rental.urls'
@@ -150,7 +151,10 @@ REST_FRAMEWORK = {
 
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "capstone-project-1-3n5w.onrender.com",
+]
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 

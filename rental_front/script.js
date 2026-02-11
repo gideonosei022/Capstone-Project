@@ -1,32 +1,50 @@
-const API_URL = "http://127.0.0.1:8000/api/properties/";
+// script.js
 
-function loadProperties() {
-    fetch(API_URL)
-        .then(res => res.json())
-        .then(data => displayProperties(data));
-}
+// The API URL from your Render backend
+const API_URL = "https://capstone-project-1-3n5w.onrender.com/api/properties/";
 
-function displayProperties(properties) {
-    const container = document.getElementById("property-list");
-    container.innerHTML = "";
+// Select the container where properties will be displayed
+const propertiesContainer = document.getElementById("properties-container");
 
+// Function to fetch properties
+async function fetchProperties() {
+  try {
+    const response = await fetch(API_URL);
+
+    // Check if the response is OK
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    const properties = await response.json();
+
+    // Clear container before rendering
+    propertiesContainer.innerHTML = "";
+
+    if (properties.length === 0) {
+      propertiesContainer.innerHTML = "<p>No properties found.</p>";
+      return;
+    }
+
+    // Render each property
     properties.forEach(property => {
-        const div = document.createElement("div");
-        div.className = "property";
-        div.innerHTML = `
-            <h3>${property.title}</h3>
-            <p>${property.location}</p>
-            <p>₦${property.price}</p>
-        `;
-        container.appendChild(div);
+      const propertyCard = document.createElement("div");
+      propertyCard.classList.add("property-card");
+
+      propertyCard.innerHTML = `
+        <h3>${property.title}</h3>
+        <p><strong>Price:</strong> $${property.price}</p>
+        <p><strong>Location:</strong> ${property.location}</p>
+        <p>${property.description}</p>
+      `;
+
+      propertiesContainer.appendChild(propertyCard);
     });
+  } catch (error) {
+    console.error(error);
+    propertiesContainer.innerHTML = `<p style="color:red;">Failed to load properties. Try again later.</p>`;
+  }
 }
 
-function searchProperties() {
-    const query = document.getElementById("searchInput").value;
-    fetch(`${API_URL}?search=${query}`)
-        .then(res => res.json())
-        .then(data => displayProperties(data));
-}
-
-loadProperties();
+// Fetch properties when the page loads
+window.addEventListener("DOMContentLoaded", fetchProperties);
